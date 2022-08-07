@@ -2501,4 +2501,3 @@ console.log(isEmail(email));
 */
 
 
-console.log(countWords(txt));
