@@ -1,0 +1,42 @@
+*{
+    color: aliceblue;
+    box-sizing: border-box;
+
+}
+
+body{
+    background: rgb(26, 25, 25);
+}
+
+.give_me_hero{
+    background-color: black;
+    /*background:linear-gradient(41deg, rgb(163, 9, 9) 10%,rgba(236, 9, 9, 0.11), rgb(66, 124, 201)100%);*/
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  
+}
+
+#container
+{
+    width: 400px;
+    height: 300px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button
+{
+color: black;
+width: 60px;
+height: 50px;
+margin: 5px;   
+text-align: center; 
+}
+
