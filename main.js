@@ -2500,4 +2500,285 @@ function isEmail(email) {
 console.log(isEmail(email));
 */
 
+/*
+// Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// Data needed for first part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order:function(strterIndex,mainIndex){
+    return [this.starterMenu[strterIndex],this.mainMenu[mainIndex]]
+  },
+  orderDelivery:function({startingTime,ExpectedTime,theorder}){
+    console.log(`your order of ${this.order(theorder[0],theorder[1])} has startded in${startingTime} and expected to be delevered in ${ExpectedTime}`);
+  },
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+  orderPizza:function (mainIngrediant,...subIngrediants) {
+    console.log(mainIngrediant);
+    console.log(subIngrediants);
+    }
+  
+};
+
+*/
+
+
+//Array destructring
+/*
+let  [first, ,third]=restaurant.categories;
+*/
+
+//to switch values you can do it like this
+/*
+[third,first]=[first,third];
+text.textContent=`${first},${third}`;
+console.log(first,third);
+*/
+
+//methods using destructure
+/*
+let [starter,main]=restaurant.order(1,1);
+
+console.log(starter);
+console.log(main);
+*/
+
+//destructure an array indide an array
+/*
+const arr =[2,5,7,[20,8]];
+
+const [a,b, ,[c]]=arr;
+
+console.log(a,b,c);
+*/
+
+//setting default value of an array 
+
+/*
+const arr =[2,5,7,[20,8]];
+
+const [a=1,b=2, ,[c=3],d="notFound"]=arr;
+
+console.log(a,b,c,d);
+*/
+
+
+//object destruturing
+/*
+let{name}= restaurant;
+console.log(name);
+*/
+
+
+//if you want to rename the value of a destrcted object
+//you can do it like this
+/*
+let{name:ResturantName}= restaurant;
+console.log(ResturantName);
+*/
+
+
+//setting default value of an array 
+/*
+const {menue=[],starterMenu:mainCourse ="object is not found"}=restaurant;
+
+console.log(mainCourse,menue);
+*/
+
+//mutating object variables
+/*
+let a=12;
+let b = 24;
+const obj={
+  a:5,
+  b:6,
+  c:9
+}
+({a,b}= obj );//we add curly braces to tell js we do want to reassign the values that exist 
+console.log(a,b);
+*/
+
+//nested object destructuring
+/*
+const {openingHours}=restaurant;
+
+const{sat:{open,close}}=openingHours;
+
+console.log(open,close);
+*/
+
+//Example of common way for destructuring an object in method arguments;
+/*
+const deleveryStatus={
+  startingTime:"2:50PM",
+  ExpectedTime:"5:50PM",
+  theorder:[2,2]
+}
+restaurant.orderDelivery(deleveryStatus);
+*/
+
+
+//The spread Operator(...)
+/*
+let arr =[1,5,6];
+
+let badnewArray=[70,54,arr[0],arr[1],arr[2]]// this means that you have insrt every array element manually
+console.log(badnewArray);
+let goodNewArray=[70,54,...arr];
+console.log(goodNewArray);
+*/
+
+//you can also add to a new element with a new  array like this
+/*
+const arr =[1,5,6];
+const newArray=[...arr,"hello World"];
+console.log(newArray);
+*/
+
+//you can use the spread operator to make a shallow copy of an array like this
+/*
+let arr =[1,5,6];
+const theNewArray=[...arr];
+console.log(theNewArray);
+*/
+
+//you can also join 2 arrays or more using the spread operator like this
+/*
+let arr =[1,5,6];
+let arr2 =[14,64,789];
+let joinedArray=[...arr,...arr2]
+console.log(joinedArray);
+*/
+
+//spread operator works on any itterable like string,maps,sets
+/*
+let fName="ALI";
+let nameLetters=[...fName];
+console.log(nameLetters);
+*/
+
+//even objects can use the spread operator scince es2021
+/*
+const theNewResturant={
+  ...restaurant
+}
+*/
+
+//the rest operator is the same (...) but it is on the left side of the (=) operator
+//as the name suggests it is used to get the rest of the elements
+/*
+const arr=[5,8,4,"ahmed","khalid"];
+
+const [a,b,c,...theRestOperator]=arr;
+console.log(a,b,c,theRestOperator);//this will give  5 8 4 ['ahmed', 'khalid']
+*/
+
+//the rest operator also used on objects
+/*
+const {mainMenu,...newrestaurant}= restaurant;
+console.log(mainMenu);
+*/
+
+//you can also use the rest peramater  with functions like this
+/*
+const addingManyNumbers =(...numbers)=> {
+  let num =0;
+  numbers.forEach(number => {
+    num+=number
+  });
+
+  console.log(num)
+}
+addingManyNumbers(2,56,8,1,54);
+*/
+
+
+/*
+restaurant.orderPizza("peper","mashroom","sauce","cetchup")
+*/
+
+
+//short cercuting with the (OR ||) operator
+// short cercuting will return true for any data type however if it was false it will change it to the FIRST NEXT TRUTHY value and stop to make it the value
+/*
+
+//falsy values Examples undefined , "", 0
+
+console.log(false||"wrong");
+console.log(true||"correct");
+console.log(2||"2 is not true");
+*/
+//the short cercuting is commonly used for giving a default value if the initial value is false 
+
+/*
+
+const theResturantExist = restaurant.branch100 ? restaurant.branch100 : "there is no such resturant";
+//you can do it even faster with the new logical assignment operator 
+restaurant.newAddition ||= "you have no new addition"
+console.log(restaurant.newAddition);
+
+*/
+
+//Nullish Coalescing(??)
+//  Nullish Coalescing is like the || short cercuting but it handles the nullish values rather than the false values
+// Nullish values are : null,undefined (Not "",0)
+
+
+
+//example 
+
+/*
+
+const numberOfGuests=0;
+
+//wrong tool usage
+console.log(numberOfGuests||10); //this will return 10 which is unwanted result in this case 
+
+//Correct tool usage
+console.log(numberOfGuests ?? 10); //this will return 0 which is the correct result in this case
+
+//you can do it even faster with the new logical assignment operator 
+console.log(numberOfGuests??=10);
+
+*/
+
+
+
+
+//short cercuting with the (AND &&) operator
+// short cercuting && will return  the first false vlaue for any data type however if it was true it will continue to the NEXT TRUTHY value untill it reach the first false value
+/*
+console.log("ahmed"&&null&&undefined);
+
+// you can even do it like that 
+restaurant.orderPizza && restaurant.orderPizza("mashroom","dough")
+
+//you can do it even faster with the new logical assignment operator 
+console.log(restaurant.orderPizza &&= null); 
+
+*/
+
+
+
+
+
 
