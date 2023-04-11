@@ -2780,5 +2780,395 @@ console.log(restaurant.orderPizza &&= null);
 
 
 
+//the for of loop 
+//const items=[1,5,4,89,3];
+//features
+//shorter
+//for (const item of items) console.log(items);
+
+//you only can have the index in the for of loop like this
+/*
+for (const item of items.entries()) {
+  console.log(item); //this will return an arrays each array is like this[index,item]
+}
+*/
+//we can even do it in the destructure way like this 
+/*
+for (const [i,number] of items.entries()) {
+  console.log(`${i} is your lucky step and ${number} is your lucky number`); //this will return an arrays each array is like this[index,item]
+} 
+*/
 
 
+//optional chaining (?.)
+//optional chaining  will stop at any point if the refered chain does not exist
+/*
+const obj={
+  name:{
+    first:"ali",
+    last:"alshebel"
+  },
+  age:24,
+  job:{
+    firstJob:{
+      SD:"2years",
+      workingAs:"GD"
+    },
+    
+  }
+};
+
+*/
+//console.log(obj.name.middle.close);// this will cause a refrence error Uncaught TypeError: Cannot read properties of undefined (reading 'close')
+
+//console.log(obj?.name?.middle?.close);//this will return undefined 
+
+//console.log(obj?.name?.first);
+
+//an example of using the optional chaining
+/*
+
+const job =["firstJob","secondJob","job"]
+
+for (const name of names) {
+  const exist = obj.job[name]?.SD??"less than 1 year"
+  console.log(`you've been in your first job  ${exist}`);
+}
+*/
+
+//you can also use optional chaining for methods calling 
+
+//console.log(restaurant.order?.(1,2)??`method does not exist`); 
+
+//you can also use optional chaining for checking for an empty Array
+/*
+const anEmptyArray= [];
+
+const aFullArray= [2,4,7];
+
+console.log(anEmptyArray?.[0]??`this Array is empty`);
+console.log(aFullArray?.[0]??`this Array is empty`);
+*/
+
+
+//looping ojects  using object keys
+
+/*
+
+const openningHours={
+  sat:{
+    open:1,
+    close:20
+  },
+  sun:{
+    open:1,
+    close:20
+  },
+  mon:{
+    open:1,
+    close:20
+  },
+  tus:{
+    open:1,
+    close:20
+  },
+  thu:{
+    open:1,
+    close:20
+  }
+};
+
+const daysOfOpenningArray=Object.keys(openningHours);
+
+let textOfOpenningDays=`we are open in ${daysOfOpenningArray.length} days of the week `;
+
+for (const day of daysOfOpenningArray ) {
+  textOfOpenningDays+=`${day} , `
+};
+
+console.log(textOfOpenningDays);
+*/
+
+
+
+
+//looping ojects  using object values
+
+/*
+
+const openningHours={
+  sat:{
+    open:1,
+    close:20
+  },
+  sun:{
+    open:1,
+    close:20
+  },
+  mon:{
+    open:1,
+    close:20
+  },
+  tus:{
+    open:1,
+    close:20
+  },
+  thu:{
+    open:1,
+    close:20
+  }
+};
+
+const daysOfOpenningArray=Object.values(openningHours);
+
+let textOfDays=`we are open in `;
+
+for (const {open,close} of daysOfOpenningArray ) {
+
+  textOfDays+=`${open} ,${close} `
+
+};
+console.log(textOfDays);
+
+*/
+
+
+//looping ojects  using object entires
+
+/*
+const openningHours={
+  sat:{
+    open:1,
+    close:20
+  },
+  sun:{
+    open:1,
+    close:20
+  },
+  mon:{
+    open:1,
+    close:20
+  },
+  tus:{
+    open:1,
+    close:20
+  },
+  thu:{
+    open:1,
+    close:20
+  }
+};
+
+const daysOfOpenningArray=Object.entries(openningHours);
+
+let textOfDays=`we are open in `;
+
+for (const [day,{open,close}] of daysOfOpenningArray ) {
+
+  textOfDays+=`${day} from  ${open} to ${close} ,  `
+
+};
+console.log(textOfDays);
+
+*/
+
+
+//Coding Challenge #2
+
+/* 
+Let's continue with our football betting app!
+
+✅1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+✅2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀
+*/
+
+/*
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+*/
+//challange 1
+//for (const [key,player] of game.scored.entries()) console.log(`player ${key} : ${player}`);
+
+//chalange 2 
+//2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+/*
+let avarageOdd=0;
+for (const number of theOddsAray ) {
+  avarageOdd+=number;
+}
+console.log(`the avarage odds are ${avarageOdd/theOddsAray.length}`);
+*/
+
+
+//chalange 3
+/*3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+Odd of victory Bayern Munich: 1.33
+Odd of draw: 3.25
+Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+*/
+/*
+const theOddsAray=Object.entries(game.odds);
+for (const [team,score] of theOddsAray) {
+  let prediction= game[team]? `victory`:`draw`;
+ console.log(`Odd of ${prediction} ${game[team]? game[team]:``}: ${score}`);
+}
+*/
+
+//chalange 4 
+/*
+Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+*/
+
+/*
+const score={}
+for (const scored of Object.values(game.scored)) {
+
+ score[scored] ? score[scored]++ : score[scored]=1
+}
+console.log(score);
+*/
+
+//before es6 javaScript had only 2 data structure
+// objects and arrays with ES6 we have 2 more data structure sets and maps
+
+//SETS are a colliction of data that doesn't duplicate values and remove any additional one 
+//sets accept itterables 
+
+/*
+const orderSet = new Set([
+  'pasta',
+  'pizza', 
+  'pasta',
+  'fries',
+  'burger']);
+
+  console.log(orderSet);
+
+  */
+
+
+  /*
+  it logs 
+  Set(4) {'pasta', 'pizza', 'fries', 'burger'}
+[[Entries]]
+0
+: 
+"pasta"
+1
+: 
+"pizza"
+2
+: 
+"fries"
+3
+: 
+"burger"
+size
+: 
+4
+*/
+/*
+console.log(orderSet.size);//will give how many elements inside
+
+console.log(orderSet.has("pizza"));//will check if elements exist simillar to include method in arrays;
+
+console.log(orderSet.add("chicken"));//will add if the element does not exist
+
+console.log(orderSet.delete("pizza"));//will delete the element
+
+for (const order of orderSet) {
+  console.log(order);
+}
+*/
+//you can make a set into an an array using the spread operator
+/*
+const newValues=[...orderSet];
+console.log(newValues);
+*/
+
+//Maps
+// maps are similar to object but it use cases deffer and it can store a key with any value
+/*
+const theNewMap= new Map();
+
+theNewMap.set("ahmed",1);//this will store the string "ahmed" as a key and 1 as a value
+
+//you can even chain thr set like this
+theNewMap.set("first",55).set("s",33);
+console.log(theNewMap);
+console.log(theNewMap.get("ahmed"));//this is to retrive the value using the key
+
+//you can give an array as the key like this
+const arr=[111,2,6];
+
+theNewMap.set(arr,"firstArray")
+
+//you can delete using the key like this
+theNewMap.delete(arr);
+
+//you can search if element exist like this 
+console.log(theNewMap.has("ahmed"));
+
+//you can know the size of the map like this 
+console.log(theNewMap.size);
+
+console.log(theNewMap); 
+*/
