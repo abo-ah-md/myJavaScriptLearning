@@ -3172,3 +3172,301 @@ console.log(theNewMap.size);
 
 console.log(theNewMap); 
 */
+
+
+//setting a default value to a function parameters
+/*
+const bookings=[]
+const createBooking= function(flightNum =1,passengerNum=2,price=0.21){
+  
+   
+    const BookingRecord={
+        flightNum,
+        passengerNum,
+        price
+    };
+ 
+    bookings.push(BookingRecord)
+
+    console.log(BookingRecord);
+
+
+}
+createBooking(55,646,) ;
+console.log(bookings);
+
+*/
+//passing an argument by value vs by reference 
+/*
+const flight =`departing`;
+
+const johans={
+    name:"ali",
+    age:25,
+}
+
+const bookingFlight = function(flightName,Passanger) {
+    
+    flightName="arriving"; //this will not change the original becasue it's just a copy 
+    Passanger.name= `MR.` + Passanger.name;
+} 
+
+bookingFlight(flight,johans);
+
+console.log(flight,johans);
+
+*/
+
+//callBack function example 1
+/*
+
+
+const oneWord = function (str){
+    return str.replace(/ /g,"").toLowerCase();
+
+};
+
+
+const upperFirstWord = function (str){
+    const[first, ...others]=str.split(' ');
+    return [first.toUpperCase(),...others].join(" ");
+    
+};  
+ 
+//Higher order function
+const transformers = function (str,fn){
+console.log(`transformed string is ${fn(str)} and the used function is ${fn.name}`);
+};   
+transformers("javaScript is the best",upperFirstWord);
+
+transformers("javaScript is the best",oneWord);
+
+*/
+
+//callBack function example 2
+/*
+const joy= function () {
+    console.log("🎉😄");
+  };
+
+//addEventListener is a high order function 
+document.body.addEventListener("click",joy);
+*/
+
+//callBack function example 3
+/*
+
+const joy= function () {
+    console.log("🎉😄");
+  };
+
+//the foreach method will do the function foreach element in the array 
+["ali","norah","khalid"].forEach(joy)
+
+*/
+
+//a high order function that returns a function 
+/*
+const statu= function (state){
+
+    return function name(personName) {
+        console.log(`hello ${personName} you look ${state}`);
+    }
+};
+
+//we stored the returned function in a variable
+const state=statu("Happy");
+
+//used the new returned function 
+state("ahmed")
+
+//you can even do it like this 
+statu("Happy")("hamad")
+*/
+
+//a high order (arrow function) function that returns a function 
+/*
+const statu=  state=> personName  =>
+  console.log(`hello ${personName} you look ${state}`);
+statu("happy")("ahmed");
+*/ 
+/*
+const airLine={
+    airLineName:"saudi Airlines",
+    code:"SAAL",
+    bookings:[],
+
+    book(flightNum,name){
+        console.log(`${name} booked a seat on 
+        ${this.airLineName} flight number${flightNum}`);
+
+        this.bookings.push({flight:`${this.airLineName} ${flightNum}`
+            ,name})
+    }
+};
+*/
+/*
+airLine.book(235,"abdullah");
+airLine.book(284,"ali");
+*/
+//console.log(airLine.bookings);
+/*
+const newAirLine={
+    airLineName:"adel Airlines",
+    code:"AAL",
+    bookings:[],
+}
+
+const bushingBookingInfo= airLine.book;
+*/
+//this will not work because this key word
+//will only point to the object that is called with 
+//bushingBookingInfo(235,"abdullah")
+
+//to fix this issue we use the function
+// (call) method which will allow to redirect the (this) keyword 
+/*
+bushingBookingInfo.call(newAirLine,2445,"ali");
+bushingBookingInfo.call(airLine,235,"abdullah");
+*/
+
+//another fix to this issue we use the function
+// (apply) method which will allow to redirect the (this) keyword
+//but it only accept an array as the seconf argument
+//apply is not used these days because we can use
+// (call)+ the spread operator (...) to acheive the same result
+//const flightInfo=[2445,"ali"]
+/*
+bushingBookingInfo.apply(newAirLine,flightInfo);
+bushingBookingInfo.apply(airLine,flightInfo);
+*/
+
+// using (call)+ the spread operator (...)
+/*
+bushingBookingInfo.call(newAirLine,...flightInfo);
+*/
+
+//The function method (bind) gives us the ability
+// to repoint (this) keyword by returning the same method but with 
+//specefied object bound to the (this ) keyword
+
+/*
+const BOUNDbushingBookingInfo= airLine.book.bind(newAirLine);
+
+BOUNDbushingBookingInfo(456,"ahmed");
+*/
+
+
+//The function method (bind) is very usfull with eventListners
+/*
+airLine.planes=300;
+
+airLine.buyPlane=() => {
+    airLine.planes++ 
+console.log(airLine.planes);
+}
+document.querySelector(".buy").addEventListener("click",airLine.buyPlane.bind())
+*/
+
+// Immediately Invoked Function Expressions (IIFE) 
+//this for making the function runs once and without assigning it to a variable 
+
+
+//this will give an error because java script expexting the name of the function 
+/*
+function () {
+    console.log(`run only once `);
+  }
+
+  */
+
+  //however, we can trick javascript to think that it's an already stated function 
+ 
+  /*
+  (function () {
+    console.log(`run only once `);
+  })()
+  */
+
+//this how it would look in an arrow function
+//(()=> console.log(`run only once `))()
+
+
+//clousre
+//clousre is a consept that makes a scope that
+// preserve the variables from the parent function even if it was no longer in the excution stack
+/*
+const parent= function (){
+const parentVar=25
+    return function (){
+        console.log(parentVar);
+    }
+};
+
+const callBackFunc=parent();
+callBackFunc();
+ 
+console.dir(callBackFunc)
+*/
+
+//console.dir() will show if the function has any clousre in the scope
+/*
+[[Scopes]]
+: 
+Scopes[3]
+0
+: 
+Closure (parent)
+parentVar
+: 
+25
+*/
+
+//another example of a clousre without a callBack Function
+
+
+/*
+let theHoldingClousreFunc;
+
+const functionExp= function(){
+    let a=23
+    theHoldingClousreFunc= function (){
+         console.log(a*2)
+    }
+};
+
+const funcExp2=function () { 
+    let b=500;
+    theHoldingClousreFunc= function (){
+         console.log(b*2)
+    }
+ }
+
+functionExp();
+
+theHoldingClousreFunc();//now the function holds the value of a
+
+funcExp2();
+theHoldingClousreFunc()////now the function holds the value of b
+
+*/
+
+
+//another example of a clousre is with the timer function
+/*
+const functionParent=function(n,wait){
+    let people=n/5;
+
+    //this function used a clousre to preserve the parent
+    // function variables even after the function no longer exist in the callStack 
+    setTimeout(function () {
+        console.log(`your meal for ${n} pizza is ready and it can fill${people} people `);
+      },wait*1000);
+
+      console.log(`your meal will be ready in ${wait} seconds`);
+};
+
+let people=500;//this will not override the clousre because clousre scope has an even higher priortiy over the scope Chain
+
+functionParent(3,9)
+*/
