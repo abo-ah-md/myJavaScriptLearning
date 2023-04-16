@@ -478,7 +478,7 @@ element.appendChild(newNode) adds a new child
  
  /*
  An alternative way of achieving the same result would be the
-  use of the parentNode property to get the parent of the element 
+//use of the parentNode property to get the parent of the element 
   we want to remove:
 
  child[0].parentNode.removeChild(child[0]);
@@ -3469,4 +3469,110 @@ const functionParent=function(n,wait){
 let people=500;//this will not override the clousre because clousre scope has an even higher priortiy over the scope Chain
 
 functionParent(3,9)
+*/
+
+
+//let arr=["a","b","c","d"];
+
+
+//Slice
+//Slice does not change the original Array
+/*
+console.log(arr.slice(2)); // this will return a new array sliced from index of 2 till the end of the array
+
+console.log(arr.slice(1,3)); // this will return a new array sliced from index of 1 till the index of 2
+
+console.log(arr.slice(-1)); // this will return a new array sliced from the last index of the array
+
+console.log(arr.slice); // this will return a shallow copy of the  array;
+*/
+
+
+//splice
+//Splice  changes the original Array by removing the spliced elements from the array to a new array
+/*
+console.log(arr.splice(2)); // this will return a new array spliced from index of 2 till the end of the array;
+
+console.log(arr.splice(2,2)); // the second perameter will determain how many elements should be deleted starting from the mentioned first argument
+*/
+
+
+//reverse (effects on the original array)
+/*
+console.log(arr.reverse()); // this will reverse the elemnts order in the array
+*/
+
+//Concat (does not effects on the original array)
+/*
+let arr2=[1,2,3,4,5];
+
+console.log(arr.concat(arr2)); // this will return combination of the arr2 after the arr1;
+
+//it is the same as [...arr1,...arr2]
+*/
+
+//join (effects on the original array)
+/*
+console.log(arr.join("-")); // this will return a joined string that seperats element by the argument input
+*/
+
+//(at) method
+//the at method will give the value of the given index number in the argument
+
+//this will do the same as 
+/*
+arr[1]
+
+//the at methods really shine when you try to get the value of the last index
+console.log(arr.at(-1)); // this will return  the value of the last index
+*/
+
+// LECTURES
+/*
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+//bank account depost and withdraw array
+
+//comparing for of to foreach
+//the syntax is a little bit defferent but the main defference is
+//for of loop accept break and continue while forEach does not 
+
+
+//for of
+for (const [i,movement] of movements.entries()) {
+  if (movement<0) {
+    console.log(`movement ${i}:you have withdraw`);
+  }else{
+    console.log(`movement ${i}:you have deposit`);
+  }
+}
+
+//forEach
+//forEach will have a cllback function that gets called on each itiration
+movements.forEach(function(movement,i,array){
+  if (movement<0) {
+    console.log(`movement ${i}:you have withdraw`);
+  }else{
+    console.log(`movement ${i}:you have deposit`);
+  }
+})
+//forEach loop also works the same with maps and sets
+//exept because sets does not have keys so the key will give the same as the value argument
+*/
+/////////////////////////////////////////////////
+
+
+//MAP (no effect on the original array)
+//map array method will loop over each element in the orriginal array and apply 
+//a callBack function to it and then returns a new array with the result
+/*
+const eurToUsd=1.1;
+
+const usdMovement=movements.map( (mov,i,arr)=> eurToUsd*mov)
+
+console.log(usdMovement); 
 */
