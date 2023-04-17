@@ -3639,3 +3639,54 @@ account1.movements.flat(2);//this will return one dimention array from a depth u
 //flatmap will make a map first which is an array insede an array and then will flat it 
 //note that flatmap will only go as far as 2 dimentions only 
 */
+
+
+
+
+//convert and check numbers and working with them 
+//numbers in javascript are not accurate when it comes to decimal values
+// it actually store them as decimal and then represent them as int
+/*
+let example;
+ console.log(1===1.0);//true
+ console.log(0.1+0.2);//0.30000000000000004
+//to convert a string to a number javascript Number object has a few methods
+// that do what is called boxing which to to take the string and type coortion it to a number 
+// as the situation with == sign
+
+let strNum= "123";
+let strNum1="10";
+
+console.log(Number(strNum));//Number will automaticaly return a number
+console.log(+strNum);//Number will automaticaly return  a number because it is an operational sign;
+console.log(+strNum);//Number will automaticaly return  a number because it is an operational sign;
+
+//parsing 
+let parsNum= "123px";
+let parsNum1="10.5rem";
+
+//this will return only the  number only if the first string index is a string
+// the second parameter is for number system type like binary 2 or 10 dicimal
+console.log(Number.parseInt(parsNum,10));
+
+console.log(Number.parseFloat(parsNum1,10));// this method is like the firs one but to handle float
+
+//for checking is a number or not
+
+console.log(Number.isFinite(1));
+console.log(Number.isFinite(strNum));
+*/
+//creat a date
+/*
+const theDate= new Date(2023, 12, 11, 10, 23, 20, 13)
+console.log( new Date());//Mon Apr 17 2023 06:35:01 GMT+0300 (Arabian Standard Time)
+console.log(theDate.getFullYear());
+console.log(theDate.getMonth());
+console.log(theDate.getDate());
+console.log(theDate.getHours());
+console.log(theDate.getMinutes());
+console.log(theDate.getSeconds());
+console.log(theDate.getMilliseconds());
+console.log(theDate.getTime());
+console.log(theDate.toISOString());
+*/
