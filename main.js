@@ -3576,3 +3576,66 @@ const usdMovement=movements.map( (mov,i,arr)=> eurToUsd*mov)
 
 console.log(usdMovement); 
 */
+
+/*
+const movements=[200,450,-400,3000,-650,-130,70,1300];
+
+//include vs some and every methods
+
+movements.includes(200);//this will return true but
+// what if we want to know if the array contains a certain condition ?
+
+//this where some and every come into play 
+//we are going to test if some of the array values are positive
+movements.some(mov => mov > 0)//this will return true
+
+//every return true if all the elemnts in the array meets the condition
+movements.every(mov => mov > 0)//this will return false
+*/
+
+/*
+//flat and flat map 
+
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, [450, -400], 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+//flat will make any dimention array into one dimention
+
+account1.movements.flat();//this will return one dimention array
+
+//the default dimention depth of flatning is 2 
+//if you need to go deeper you can put the depth number in the argument like this 
+
+account1.movements.flat(2);//this will return one dimention array from a depth up to a 3 levels deep
+
+//flatmap 
+//flatmap will make a map first which is an array insede an array and then will flat it 
+//note that flatmap will only go as far as 2 dimentions only 
+*/
