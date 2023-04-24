@@ -3690,3 +3690,167 @@ console.log(theDate.getMilliseconds());
 console.log(theDate.getTime());
 console.log(theDate.toISOString());
 */
+
+
+//OOP
+
+//in javascript you can apply OOP in multiple ways
+/*
+//1-init classes (like) using Functions
+const ClassUser = function (fName,lName) { //you can't use Arrow function
+  this.fName=fName //refer first by this key word 
+  this.lName=lName
+
+  //you should never declare a method inside a Class so that other objects can inherent from it
+
+};
+
+const newUser = new ClassUser("abdullah"," SH"); //instance of the class
+
+console.log(newUser);
+
+
+console.log(newUser.prototype);
+
+//this is how you add a method to a class using prototypal inhertince 
+ClassUser.prototype.fullname = function(){
+  const fullName=this.fName + this.lName;
+  return fullName;
+};
+
+//you can call the function now with any instance like this 
+console.log(newUser.fullname());
+
+console.log(newUser.__proto__=== ClassUser.prototype);//this confirms that the prototype of the constructor  is the __proto__   of the instance 
+//another method to conform
+console.log(ClassUser.prototype.isPrototypeOf( newUser));
+
+//this will conform the if the oroerty is a prototype or is handled as main property of the instance
+console.log(newUser.hasOwnProperty("fName"));
+
+const arr = [3,5,7];
+console.log(arr.__proto__);
+*/
+// Coding Challenge #1
+
+/* 
+1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
+2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
+3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
+4. Create 2 car objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them.
+
+DATA CAR 1: 'BMW' going at 120 km/h
+DATA CAR 2: 'Mercedes' going at 95 km/h
+
+*/
+/*
+const Car = function(name,speed){
+
+  this.name=name
+  this.speed=speed
+  
+};
+
+Car.prototype.accelerate = function (){
+  this.speed += 10;
+ console.log(`your ${this.name} is runnung at ${this.speed}km/h now`);
+};
+
+
+Car.prototype.break = function (){
+  this.speed -= 5;
+  console.log(`your ${this.name} is runnung at ${this.speed}km/h now`);
+}
+const BMW = new Car("BMW",120);
+const Mercedes = new Car("Mercedes",95);
+
+
+BMW.accelerate();
+BMW.accelerate();
+BMW.accelerate();
+BMW.accelerate();
+BMW.break();
+BMW.break();
+BMW.break();
+BMW.break();
+
+Mercedes.accelerate();
+Mercedes.accelerate();
+Mercedes.accelerate();
+Mercedes.accelerate();
+Mercedes.break();
+Mercedes.break();
+Mercedes.break();
+Mercedes.break();
+
+
+*/
+
+//
+////////////////////////////////
+
+//OOP using ES6 Classes 
+//ES6 Classes is the new more modern way of implementing 
+//OOP in JavaScript that resembles similar syntax to the 
+//traditional way of using OOP in other languages
+
+//you can eather use Classes declartion or expresstion
+class Person {
+  //constructor is for declaring property inside of a class
+  constructor(fName,lName){
+    this.fName = fName,
+    this.lName = lName
+  }
+  //one of the key features of implemtning with ES6 classes that you can 
+  //declare a method in the class and all the instances will inhereint those methods 
+  //unlike the function approach
+  fullName(){
+const fullName = `${this.fName} ${this.lName}`
+return fullName
+  }
+
+  set CheckName (name){
+if (name[2]) {
+  console.log("you need only 2 characters of your last name");
+}
+else{
+  this.lName =name; 
+}
+  }
+};
+
+const newUser = new Person("abdullah","SH");
+console.log(newUser);
+console.log(newUser.fName);
+console.log(newUser.fullName());
+
+//Couple of things to keep in mind 
+//classes are not hoisted 
+//classes are first-class citezens which mean you insert them and return them from functions 
+
+
+////////////////////
+//Getters and Setters
+//every object in JS can have Getters and Setters 
+//which are spicial 
+
+const user = {
+  owner : "Abdullah",
+  movement:[25,46,81],
+
+get latest(){ return this.movement.slice(-1).pop()}, // will get from the user calss
+
+//will add or change from the class 
+//Notice that you don't need to have setter and getter for the same property 
+//if you have one it will work just fine 
+set latest(mov){ 
+  this.movement.push(mov)
+} 
+};
+
+console.log(user.latest) // instead of calling the method [()] we simply write it without calling it just like the callback functions
+user.latest = 50; //this will take the value and make it as the setter argument
+
+//getters and setters also can be used in data validation
+//newUser.CheckName = 'shebel';
+newUser.CheckName = 'sh';
