@@ -3977,7 +3977,7 @@ const sAbdullah = new Student("abdullah","sh", "English")
 console.log(sAbdullah.courses());
 console.log(sAbdullah.fullName());
 */
-
+/*
 //Object.create() inheretence 
 
 const Person = {
@@ -4009,3 +4009,47 @@ this.course = course
 
   console.log(newStudent.init("abdullah","sh","English"));
   console.log(newPerson.init("abdullah","sh"));
+*/
+
+//ES6 classes incapsulation
+/*
+class Person  {
+  //puplic field (also exist on an instance )
+language = navigator.language
+
+  //private field
+#score = []
+
+#pin;
+//in order to set the private field we need to assign it outside first
+  constructor (fName,lName,pinCode){
+this.fName = fName
+this.lName = lName
+this._ip = ["0.1584.58"] //(_) is a convintion to indecate that this field id protected
+this.#pin =pinCode
+}
+
+getIp (){
+  return this._ip; // this is how you soppuse to access the protected data info
+}
+
+//(_) is a convintion to indecate that this method is protected
+_setNewPassword(password){
+  this._password =password;
+}
+
+fullName(){
+  return `hello ${this.fName} ${this.lName}`;
+}
+};
+
+const newPerson = new Person("abdullah","sh")
+
+console.log(newPerson._ip);
+console.log(Person.#score); //Uncaught SyntaxError: Private field '#score' must be declared in an enclosing class
+console.log(newPerson.#score); //Uncaught SyntaxError: Private field '#score' must be declared in an enclosing class
+
+
+//methods chaining 
+//you can chain methods by just returnning the (this) key word  
+*/
