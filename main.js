@@ -3793,12 +3793,12 @@ Mercedes.break();
 //ES6 Classes is the new more modern way of implementing 
 //OOP in JavaScript that resembles similar syntax to the 
 //traditional way of using OOP in other languages
-
+/*
 //you can eather use Classes declartion or expresstion
 class Person {
   //constructor is for declaring property inside of a class
   constructor(fName,lName){
-    this.fName = fName,
+    this.fName =  fName
     this.lName = lName
   }
   //one of the key features of implemtning with ES6 classes that you can 
@@ -3817,6 +3817,10 @@ else{
   this.lName =name; 
 }
   }
+
+  static greeting (){
+    return `hi there `
+  }
 };
 
 const newUser = new Person("abdullah","SH");
@@ -3834,6 +3838,7 @@ console.log(newUser.fullName());
 //every object in JS can have Getters and Setters 
 //which are spicial 
 
+//normal object
 const user = {
   owner : "Abdullah",
   movement:[25,46,81],
@@ -3843,9 +3848,9 @@ get latest(){ return this.movement.slice(-1).pop()}, // will get from the user c
 //will add or change from the class 
 //Notice that you don't need to have setter and getter for the same property 
 //if you have one it will work just fine 
-set latest(mov){ 
-  this.movement.push(mov)
-} 
+set latest(mov){ this.movement.push(mov)}
+
+
 };
 
 console.log(user.latest) // instead of calling the method [()] we simply write it without calling it just like the callback functions
@@ -3854,3 +3859,153 @@ user.latest = 50; //this will take the value and make it as the setter argument
 //getters and setters also can be used in data validation
 //newUser.CheckName = 'shebel';
 newUser.CheckName = 'sh';
+
+
+//you can add a static to the classes to make them access limited to only 
+//the class itself like (Math.random());
+
+console.log(Person.greeting());
+console.log(newUser.greeting());
+*/
+
+
+//3-creating OOP using object.create()
+//object.creat() will let you you declare an object that you want to inherent from 
+/*
+const objectProto={
+  greeting (){
+  return `hello there`
+  }
+};
+
+const newCreatedObj = Object.create(objectProto);
+
+console.log(newCreatedObj.greeting());
+*/
+
+/*
+//constructor function inhertince 
+
+
+//main constructor function
+const Person = function (fName,lName){
+
+  this.fName = fName
+  this.lName = lName
+
+}
+//adding  instance inherntable method
+Person.prototype.fullname = function (){
+  return `${this.fName} ${this.lName}`
+}
+
+
+
+//creating inherntable  class  of the main 
+const student = function (fName,lName,course){
+  
+   // this will bind and add  the properties of Person class 
+   //and call (this) on the new inherted class
+  Person.call(this,fName,lName,);
+
+
+  this.course = course
+  
+};
+
+//this will add the methods of the main class to the inherted class 
+student.prototype =Object.create(Person.prototype);
+
+//this will make the constructor of student  link directly to the student object 
+// rather than the person constructo 
+student.prototype.constructor = student;
+
+//adding  instance inherntable method
+student.prototype.greeting = function (){
+
+  return `hello my name is ${this.fName} i am ${this.course} student`
+};
+
+
+//creating an instance 
+const newStudent = new student ("abdullah","SH","CS");
+
+console.log(newStudent.greeting());//inherted method from the sub class 
+console.log(newStudent.fullname());//inherted method from the main 
+*/
+
+
+//ES6 classes inhertince 
+/*
+class Person  {
+  constructor (fName,lName){
+this.fName = fName
+this.lName = lName
+  }
+
+
+fullName(){
+  return `hello ${this.fName} ${this.lName}`;
+}
+};
+
+
+class Student extends Person {
+  //you only need a constrotor if you want to add more property
+  constructor(fName,lName,course){
+  super(fName,lName)
+  this.course = course;
+
+  }
+
+
+courses(){
+  return this.course
+}
+
+//overwriting the person class fullName method 
+//it is also considered an example of polymorphism
+fullName(){
+  return `student name is ${this.fName} ${this.lName}`
+}
+}
+
+
+const sAbdullah = new Student("abdullah","sh", "English")
+
+
+console.log(sAbdullah.courses());
+console.log(sAbdullah.fullName());
+*/
+
+//Object.create() inheretence 
+
+const Person = {
+init(fName,lName){
+  this.fName = fName,
+  this.lName = lName
+
+  return `hello ${fName,lName}`;
+
+
+}
+
+
+};
+
+const newPerson = Object.create(Person);
+
+
+const Student = Object.create(Person);
+
+Student.init = function (fName,lName,course) {
+  //this will inherints the properties of the first class
+  Person.init.call(this,fName,lName)
+this.course = course
+  return `hello ${fName,lName} your ${course} Course will start soon`;
+  }
+
+  const newStudent = Object.create(Student);
+
+  console.log(newStudent.init("abdullah","sh","English"));
+  console.log(newPerson.init("abdullah","sh"));
