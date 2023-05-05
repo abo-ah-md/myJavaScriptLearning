@@ -1,3 +1,33 @@
+//ES6 Modules 
+
+//this will allow to access only the specifeid variable from the module
+//import {addToCart, totalprice as price} from "./ShoppingCart.js";
+
+//addToCart("chocolate",7)
+
+
+
+
+
+//this will make all the variables in the module as an acceable object
+// keis that contains the whole imported varaible
+
+//import * as ShoopingCart from "./ShoppingCart.js"
+//ShoopingCart.addToCart("bread",25)
+//console.log("this is the export place ");
+
+
+
+//the default export will take any variable declartion in the import distaintion 
+/*
+import add from "./ShoppingCart.js"
+
+add("bread",25);
+
+*/
+
+
+
 //how to write to page
 //document.write("hello")
 
@@ -4052,4 +4082,36 @@ console.log(newPerson.#score); //Uncaught SyntaxError: Private field '#score' mu
 
 //methods chaining 
 //you can chain methods by just returnning the (this) key word  
+*/
+
+
+//Top level Await ES6
+//Top level await is the same as the normal await with a key defference that from ES2022 
+//you can use it outside of an async function on one condition {if you are using modlue instead of noraml script }
+// Ver Important Note!!! this will block the module till the excution of the top level awit finish 
+
+/*
+const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+const data = await res.json();
+console.log(data);
+
+
+//it is very usefull if you want to take a value from async function 
+const getlastPost = async function () { 
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+const data = await res.json();
+return {title:data.at(-1).title, text:data.at(-1).body}
+ }
+
+const lastPost = await getlastPost();
+
+console.log(lastPost);
+*/
+
+
+//to make objects Immutable on the first level  meaning (Array,Objects)
+/*
+const immutableObject = Object.freeze({
+  id:456646468486
+});
 */
